@@ -126,8 +126,8 @@ cd ..
 echo -e "\e[1m\e[37m" 11. Checking '$VBCC' export and PATH assigns "\e[0m\e[36m"
 if [[ -z $VBCC ]]; then
   echo     Adding Assigns to '$HOME'/.bashrc
-  echo '     *' export VBCC = '$HOME'/Dev/ApolloCrossDev/VBCC/ApolloCrossDev/bin
-  echo export VBCC='$HOME'/Dev/ApolloCrossDev/VBCC/ApolloCrossDev/bin >>$HOME/.bashrc
+  echo '     *' export VBCC = '$PREFIX'/bin
+  echo export VBCC='$PREFIX'/bin >>$HOME/.bashrc
   echo '     *' export PATH ='$VBCC':'$PATH'
   echo export PATH='$VBCC':'$PATH' >>$HOME/.bashrc
 else
