@@ -14,11 +14,9 @@ C_LIBS= $(APOLLO_GCC)/bin/targets/m68k-amigaos/lib
 C_LIBS_NDK32=$(APOLLO_GCC)/ndk/NDK3.2/lib
 C_LIBS_NDK39=$(APOLLO_GCC)/ndk/NDK3.9/Include/linker_libs
 
-C_FLAGS= +aos68k -I$(C_INCLUDE) -I$(C_INCLUDE_NDK32) -c -o
-
-O_FLAGS= -bamigahunk -x -Bstatic -Cvbcc -nostdlib -mrel $(C_LIBS)/startup.o -L$(C_LIBS) -L$(C_LIBS_NDK32) -lvc -lamiga -o 
-# -bamigahunk -x -Bstatic -Cvbcc -L$(C_LIBS_NDK32) -lamiga -o
-# -nostdlib $(C_LIBS)/startup.o
+C_FLAGS= +aos68k -I$(C_INCLUDE) -I$(C_INCLUDE_NDK39) -o
+O_FLAGS= -bamigahunk -x -Bstatic -Cvbcc -nostdlib -mrel -L$(C_LIBS) -L$(C_LIBS_NDK39) -lvc -o 
+#O_FLAGS= -bamigahunk -x -Bstatic -Cvbcc -nostdlib -mrel $(C_LIBS)/startup.o -L$(C_LIBS) -L$(C_LIBS_NDK39) -lvc -o 
 S_FLAGS= -quiet -m68080 -Fhunk -linedebug -o
 
 C_SOURCEDIR=C-Source
@@ -45,6 +43,9 @@ $(info $(O_FILES) $(C_FILES))
 $(info  )
 
 all: $(EXE)
+
+#$(EXE) : $(C_FILES)
+#	$(C_COMPILER) $(C_FLAGS) $@ $< 
 
 $(EXE) : $(O_FILES) 
 	$(O_LINKER) $(O_FLAGS) $(EXE) $(O_FILES)

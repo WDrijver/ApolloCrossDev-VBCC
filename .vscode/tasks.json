@@ -1,0 +1,64 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SVN-Apollo",
+            "type": "shell",
+            "command": "svn co svn://www.apollo-core.com/apollo_software/RIVA ${workspaceFolder}/C-Source/RIVA",
+            "group": "ApolloCrossDev",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Build C-Source",
+            "type": "shell",
+            "linux": {
+                "options": {
+                    "env": {
+                        "APOLLOCROSSDEV": "${workspaceFolder}/ApolloCrossDev",
+                        "APOLLODEVPAC": "${workspaceFolder}/ApolloCrossDev/devpac",
+                        "C_COMPILER": "${APOLLOCROSSDEV}/bin/vc"
+                    }
+                },
+                "command": "export",
+                "args": [
+                    "TEST=$C_COMPILER",
+                    "TEST2=$APOLLOCROSSDEV",
+                    "TEST3=$APOLLODEVPAC",
+                ],
+                "presentation" : {
+                    "panel":"new",
+                }   
+
+
+                "problemMatcher": {
+                    "owner": "cpp",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": {
+                        "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    }
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -36,7 +36,7 @@ cd $SOURCES
 # PART 2: Update Linux Packages 
 echo -e "\e[1m\e[37m2. Update Linux Packages\e[0m\e[36m"
 apt -y update >>$LOGFILES/part2.log 2>>$LOGFILES/part2_err.log
-apt -y install build-essential >>$LOGFILES/part2.log 2>>$LOGFILES/part2_err.log
+apt -y install build-essential git subversion >>$LOGFILES/part2.log 2>>$LOGFILES/part2_err.log
 
 # PART 3: Download VBCC Sources
 echo -e "\e[1m\e[37m3. Download VBCC-Sources\e[0m\e[36m"

@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Dev/SVN-Apollo/RIVA"
+		}
+	],
+	"settings": {
+		"makefile.launchConfigurations": [
+			{
+				"cwd": "/home/willem/TEST/ApolloCrossDev-VBCC",
+				"binaryPath": "/home/willem/TEST/ApolloCrossDev-VBCC/Output",
+				"binaryArgs": []
+			}
+		]
+	}
+}
